@@ -68,6 +68,12 @@
                     >
 
                     <p class="mt-3">
+                        <a href="/login/social">
+                            {{ __('Log In with Discord') }}
+                        </a>
+                    </p>
+
+                    <p class="mt-3">
                         <AppLink :href="route('adminAuth.forgotPassword')">
                             {{ __('Forgot your password?') }}
                         </AppLink>

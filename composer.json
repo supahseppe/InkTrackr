@@ -12,7 +12,9 @@
         "php": "^8.2",
         "daniel-cintra/modular": "^0.4.6",
         "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9"
+        "laravel/socialite": "^5.16",
+        "laravel/tinker": "^2.9",
+        "socialiteproviders/discord": "^4.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

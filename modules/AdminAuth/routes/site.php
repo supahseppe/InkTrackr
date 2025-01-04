@@ -1,9 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+use Laravel\Socialite\Facades\Socialite;
 use Modules\AdminAuth\Http\Controllers\AuthenticatedSessionController;
 use Modules\AdminAuth\Http\Controllers\NewPasswordController;
 use Modules\AdminAuth\Http\Controllers\PasswordResetLinkController;
+use Modules\User\Models\User;
 
 Route::get(config('modular.login-url'), [
     AuthenticatedSessionController::class, 'loginForm',
@@ -34,3 +38,35 @@ Route::get('/admin-auth/reset-password/{token}', [
 Route::post('/admin-auth/reset-password', [
     NewPasswordController::class, 'store',
 ])->name('adminAuth.resetPassword');
+
+// Discord login
+Route::get('/login/social', function(){
+    if (Auth::check()) {
+        return Inertia::render('Dashboard/DashboardIndex');
+    }
+    Socialite::driver('discord')->redirect();
+});
+
+Route::get('/login/social', function(){
+    if (Auth::check()) {
+        return Inertia::render('Dashboard/DashboardIndex');
+    }
+    return Socialite::driver('discord')->redirect();
+});
+
+Route::get('/auth/callback', function() {
+    $discordUser = Socialite::driver('discord')->stateless()->user();
+
+    $user = User::updateOrCreate([
+        'discord_id' => $discordUser->id,
+    ], [
+        'name' => $discordUser->name,
+        'email' => $discordUser->email,
+        'discord_token' => $discordUser->token,
+        'discord_refresh_token' => $discordUser->refreshToken,
+        'avatar' => $discordUser->avatar,
+    ]);
+ 
+    Auth::login($user);
+    return Inertia::render('Dashboard/DashboardIndex');
+});

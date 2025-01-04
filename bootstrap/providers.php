@@ -3,6 +3,8 @@
 return [
     App\Providers\AppServiceProvider::class,
 
+    \SocialiteProviders\Manager\ServiceProvider::class,
+
     Modules\Support\SupportServiceProvider::class,
     Modules\AdminAuth\AdminAuthServiceProvider::class,
     Modules\User\UserServiceProvider::class,
