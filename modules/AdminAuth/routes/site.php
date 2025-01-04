@@ -58,10 +58,11 @@ Route::get('/auth/callback', function() {
     $discordUser = Socialite::driver('discord')->stateless()->user();
 
     $user = User::updateOrCreate([
-        'discord_id' => $discordUser->id,
+        'email' => $discordUser->email,
     ], [
         'name' => $discordUser->name,
         'email' => $discordUser->email,
+        'discord_id' => $discordUser->id,
         'discord_token' => $discordUser->token,
         'discord_refresh_token' => $discordUser->refreshToken,
         'avatar' => $discordUser->avatar,

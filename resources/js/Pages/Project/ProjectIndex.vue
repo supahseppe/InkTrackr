@@ -24,6 +24,7 @@
                 <AppDataTableRow
                     v-for="(item, index) in projects.data"
                     :key="item.id"
+                    @click="goToEdit(item.id)"
                 >
                     <AppDataTableData>
                         {{ item.id }}
@@ -123,4 +124,8 @@ const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {
     confirmDialogRef.value.openModal(deleteRoute)
 }
+
+const goToEdit = (id) => {
+    console.log('Wheee ' . id);
+};
 </script>
