@@ -4,10 +4,10 @@
         <AppAuthLogo />
 
         <form @submit.prevent="submitForm">
-            <AppCard class="w-80 space-y-2 bg-skin-neutral-2">
+            <AppCard class="space-y-2 w-80 bg-skin-neutral-2">
                 <template #title>
                     <h3
-                        class="text-center text-lg font-semibold tracking-tight"
+                        class="text-lg font-semibold tracking-tight text-center"
                     >
                         {{ __('Sign in to your account') }}
                     </h3>
@@ -45,7 +45,7 @@
                         />
                     </div>
 
-                    <div class="mt-4 flex items-center">
+                    <div class="flex items-center mt-4">
                         <AppCheckbox
                             id="remember"
                             v-model="form.remember"
@@ -60,7 +60,7 @@
 
                 <template #footer>
                     <AppButton
-                        class="btn btn-primary flex w-full justify-center"
+                        class="flex justify-center w-full btn btn-primary"
                         aria-label="botao submit"
                         type="submit"
                         @click="submitForm"
