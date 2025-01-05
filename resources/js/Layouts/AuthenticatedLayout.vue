@@ -7,19 +7,15 @@
         :body-scrolling="!isMobile"
         @sidebar:toggle="sidebarToggle"
     >
-        <Link :href="route('dashboard.index')" class="mb-6 flex pl-2">
-            <img
-                src="@resources/images/logo.svg"
-                class="w-40"
-                alt="Modular Logo"
-            />
+        <Link :href="route('dashboard.index')" class="flex pl-2 mb-6">
+            <span class="text-5xl logotype">inkTrackr</span>
         </Link>
 
         <AppMenu :items="items" />
     </AppSideBar>
 
     <main
-        class="flex flex-1 flex-col pb-9"
+        class="flex flex-col flex-1 pb-9"
         :class="{ 'md:pl-64': isSideBarOpen }"
     >
         <AppFlashMessage />
