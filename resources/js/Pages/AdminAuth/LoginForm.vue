@@ -2,85 +2,15 @@
     <Head title="Login"></Head>
     <AppAuthShell>
         <AppAuthLogo />
-
-        <form @submit.prevent="submitForm">
-            <AppCard class="space-y-2 w-80 bg-skin-neutral-2">
-                <template #title>
-                    <h3
-                        class="text-lg font-semibold tracking-tight text-center"
-                    >
-                        {{ __('Sign in to your account') }}
-                    </h3>
-                </template>
-
-                <template #content>
-                    <AppFormErrors class="mb-4" />
-
-                    <div>
-                        <AppLabel for="email">{{ __('Email') }}</AppLabel>
-                        <AppInputText
-                            id="email"
-                            v-model="form.email"
-                            name="email"
-                            type="text"
-                            class="w-full"
-                            autocomplete="email"
-                            :class="{
-                                'input-error': errorsFields.includes('email')
-                            }"
-                        />
-                    </div>
-
-                    <div class="mt-6">
-                        <AppLabel for="email">{{ __('Password') }}</AppLabel>
-                        <AppInputPassword
-                            id="password"
-                            v-model="form.password"
-                            name="password"
-                            class="w-full"
-                            autocomplete="current-password"
-                            :class="{
-                                'input-error': errorsFields.includes('password')
-                            }"
-                        />
-                    </div>
-
-                    <div class="flex items-center mt-4">
-                        <AppCheckbox
-                            id="remember"
-                            v-model="form.remember"
-                            name="remember"
-                            :value="true"
-                        />
-                        <AppLabel for="remember" class="ml-3">{{
-                            __('Remember me')
-                        }}</AppLabel>
-                    </div>
-                </template>
-
-                <template #footer>
-                    <AppButton
-                        class="flex justify-center w-full btn btn-primary"
-                        aria-label="botao submit"
-                        type="submit"
-                        @click="submitForm"
-                        >{{ __('Sign in') }}</AppButton
-                    >
-
-                    <p class="mt-3">
-                        <a href="/login/social">
-                            {{ __('Log In with Discord') }}
-                        </a>
-                    </p>
-
-                    <p class="mt-3">
-                        <AppLink :href="route('adminAuth.forgotPassword')">
-                            {{ __('Forgot your password?') }}
-                        </AppLink>
-                    </p>
-                </template>
-            </AppCard>
-        </form>
+        <AppCard class="space-y-2 w-80 bg-skin-neutral-2">
+            <template #content>
+                <div class="flex flex-row justify-around">
+                    <a href="/login/social">
+                        <button class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">{{ __('Log In with Discord') }}</button>
+                    </a>
+                </div>
+            </template>
+        </AppCard>
     </AppAuthShell>
 </template>
 

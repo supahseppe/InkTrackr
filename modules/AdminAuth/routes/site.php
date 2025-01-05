@@ -7,6 +7,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Modules\AdminAuth\Http\Controllers\AuthenticatedSessionController;
 use Modules\AdminAuth\Http\Controllers\NewPasswordController;
 use Modules\AdminAuth\Http\Controllers\PasswordResetLinkController;
+use Modules\Project\Http\Controllers\ProjectController;
 use Modules\User\Models\User;
 
 Route::get(config('modular.login-url'), [
@@ -69,5 +70,6 @@ Route::get('/auth/callback', function() {
     ]);
  
     Auth::login($user);
-    return Inertia::render('Project/ProjectIndex');
+    $controller = new ProjectController();
+    return $controller->index();
 });
