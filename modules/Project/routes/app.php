@@ -15,6 +15,10 @@ Route::post('project', [
     ProjectController::class, 'store',
 ])->name('project.store');
 
+Route::get('project/{id}', [
+    ProjectController::class, 'view',
+])->name('project.view');
+
 Route::get('project/{id}/edit', [
     ProjectController::class, 'edit',
 ])->name('project.edit');

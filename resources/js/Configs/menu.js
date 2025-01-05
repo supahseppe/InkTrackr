@@ -5,7 +5,15 @@ export default {
             label: 'Dashboard',
             permission: 'Dashboard',
             icon: 'ri-dashboard-line',
-            link: route('dashboard.index')
+            link: route('dashboard.index'),
+            children: [
+                {
+                    label: 'Projects',
+                    permission: 'Acl: Project - List',
+                    icon: 'ri-account-box-line',
+                    link: route('project.index')
+                }
+            ]
         },
 
         {
@@ -30,12 +38,6 @@ export default {
                     icon: 'ri-account-box-line',
                     link: route('aclRole.index')
                 },
-                {
-                    label: 'Projects',
-                    permission: 'Acl: Project - List',
-                    icon: 'ri-account-box-line',
-                    link: route('project.index')
-                }
             ]
         }
     ]

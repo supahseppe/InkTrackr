@@ -24,7 +24,7 @@
                 <AppDataTableRow
                     v-for="(item, index) in projects.data"
                     :key="item.id"
-                    @click="goToEdit(item.id)"
+                    @click.prevent="goToView(item.id)"
                 >
                     <AppDataTableData>
                         {{ item.id }}
@@ -99,7 +99,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Head } from '@inertiajs/vue3'
+import { Head, router } from '@inertiajs/vue3'
 import useTitle from '@/Composables/useTitle'
 import useAuthCan from '@/Composables/useAuthCan'
 
@@ -125,7 +125,7 @@ const confirmDelete = (deleteRoute) => {
     confirmDialogRef.value.openModal(deleteRoute)
 }
 
-const goToEdit = (id) => {
-    console.log('Wheee ' . id);
+const goToView = (id) => {
+    router.get(route('project.view', id));
 };
 </script>

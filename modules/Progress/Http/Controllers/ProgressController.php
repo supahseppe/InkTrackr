@@ -27,17 +27,18 @@ class ProgressController extends BackendController
         ]);
     }
 
-    public function create(): Response
+    public function create(int $id): Response
     {
-        return inertia('Progress/ProgressForm');
+        return inertia('Progress/ProgressForm', [
+            'projectId' => $id,
+        ]);
     }
 
     public function store(ProgressValidate $request): RedirectResponse
-    {
-        Progress::create($request->validated());
-
-        return redirect()->route('progress.index')
-            ->with('success', 'Progress created.');
+    {   
+        $progress = Progress::create($request->validated());
+        return redirect()->route('project.view', $progress->project->id)
+            ->with('success', 'Progress logged.');
     }
 
     public function edit(int $id): Response

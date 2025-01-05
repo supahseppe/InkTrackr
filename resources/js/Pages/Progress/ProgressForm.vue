@@ -51,6 +51,10 @@ const props = defineProps({
   progress: {
     type: Object,
     default: null
+  },
+  projectId: {
+    type: Number,
+    required: true,
   }
 })
 
@@ -62,7 +66,8 @@ const breadCrumb = [
 
 const form = useForm({
   count: props.progress ? props.progress.count : 0,
-  date: props.progress ? props.progress.date : Date.now(),
+  date: props.progress ? props.progress.date : new Date().toISOString().slice(0, 19).replace('T', ' '),
+  'project_id': props.projectId
 })
 
 const { isCreate, isEdit } = useFormContext()

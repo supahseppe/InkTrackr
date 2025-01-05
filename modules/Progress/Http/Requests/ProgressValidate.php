@@ -9,6 +9,7 @@ class ProgressValidate extends Request
     public function rules(): array
     {
         return [
+            'project_id' => 'required',
             'count' => 'required',
             'date' => 'required',
         ];

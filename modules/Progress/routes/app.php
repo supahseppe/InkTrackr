@@ -7,7 +7,7 @@ Route::get('progress', [
     ProgressController::class, 'index', 
 ])->name('progress.index');
 
-Route::get('progress/create', [
+Route::get('progress/create/from/{id}', [
     ProgressController::class, 'create',
 ])->name('progress.create');
 

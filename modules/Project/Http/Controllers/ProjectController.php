@@ -14,6 +14,7 @@ class ProjectController extends BackendController
     public function index(): Response
     {
         $projects = Project::orderBy('title')
+            ->where('owner_id', Auth::user()->id)
             ->search(request('searchContext'), request('searchTerm'))
             ->paginate(request('rowsPerPage', 10))
             ->withQueryString()
@@ -26,6 +27,15 @@ class ProjectController extends BackendController
 
         return inertia('Project/ProjectIndex', [
             'projects' => $projects
+        ]);
+    }
+
+    public function view(int $id): Response
+    {
+        $project = Project::with('progress')->find($id);
+        
+        return inertia('Project/ProjectView', [
+            'project' => $project
         ]);
     }
 
