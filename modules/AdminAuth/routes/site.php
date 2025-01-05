@@ -69,5 +69,5 @@ Route::get('/auth/callback', function() {
     ]);
  
     Auth::login($user);
-    return Inertia::render('Dashboard/DashboardIndex');
+    return Inertia::render('Project/ProjectIndex');
 });
